@@ -1,0 +1,169 @@
+Visualization<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Visualization (Home)</title>
+	<link rel="stylesheet" type="text/css" href="style/style.css" />
+</head>
+
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<!-- class=logo_color allows changing of color -->
+					<h1><a href="index.html"><span class="logo_color">Jessica Tianyi Wang</span></a></h1>
+					<h2>Visualization of Complex Data</h2>
+				</div><!-- logo_text -->
+			</div><!-- logo -->
+			<div id="menubar">
+				<ul id="menu">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="objectives.html">Objectives</a></li>
+					<li><a href="RelatedResearch.html">Related Research</a></li>
+					<li class="selected"><a href="Visualization.html">Visualization</a></li>
+					<li><a href="Conclusions.html">Conclusions</a></li>
+					<li><a href="contact.html">Contact</a></li>
+
+				</ul><!-- menu -->
+			</div><!-- menubar -->
+		</div><!-- header -->
+
+		<div id="site_content">
+			<div class="sidebar">
+				<!-- insert your sidebar items here -->
+				<h3></h3>
+				<h4></h4>
+				<h5></h5>
+				<p>
+
+					<br/><a href="#"></a>
+				</p>
+				<p></p>
+				<h4></h4>
+				<h5></h5>
+				<p>
+
+					<br /><a href="#"></a>
+				</p>
+				<h3></h3>
+				<ul>
+
+			</div>
+
+			<div id="content">
+				<!-- insert page content here -->
+				<br></br>
+				<h4>Brief look after data preprocessing:</h4>
+				<br></br>
+				<img src="Excel.png" alt="excel" style="width:800px;height:300px;">
+				<br></br>
+				<br></br>
+				<h4>Some facts of the dataset: </h4>
+				<br></br>
+				<img src="Target for Mass shootings.jpg" alt="Target for Mass shootings" style="width:800px;height:500px;">
+				<br></br>
+				<br></br>
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+					<script type="text/javascript">
+						google.charts.load('current',{'packages':['corechart']});
+						google.charts.setOnLoadCallback(drawAllSheets);
+
+						function drawAllSheets() {
+							drawSheetName('Sheet1', 'SELECT A,B',
+										  GenderResponseHandler)
+							drawSheetName('Sheet1', 'SELECT C,D',
+										  MentalResponseHandler2);
+
+						}
+
+						function drawSheetName(sheetName, query, responseHandler) {
+							var queryString = encodeURIComponent(query);
+							var query = new google.visualization.Query(
+								'https://docs.google.com/spreadsheets/d/1BYGpX-j7Pj9VH0NUBrvIQOqWdANFqGG3QH3bXiLo5aQ/edit?usp=sharing'
+								+ sheetName + '&headers=1&tq=' + queryString);
+							query.send(responseHandler);
+						}
+
+						function checkError(response) {
+							if (response.isError()) {
+								alert('Error in query: ' + response.getMessage() +
+									' ' + response.getDetailedMessage());
+								return;
+							}
+						}
+
+						function MentalResponseHandler2(response) {
+							checkError(response);
+							var data = response.getDataTable();
+							data.sort({column:1, desc:true});
+
+							var options = {
+							  title: 'Mental Health Issues for Mass Shooters',
+							  is3D: true,
+							};
+
+							var chart = new google.visualization.PieChart(document.getElementById('fixedvaluepiechart_3d'));
+							chart.draw(data, options);
+							}
+
+
+							function GenderResponseHandler(response) {
+								checkError(response);
+								var data = response.getDataTable();
+								data.sort({column:1, desc:true});
+
+								var options = {
+								  title: 'Gender for Mass Shooters',
+								  is3D: true,
+								};
+
+								var chart = new google.visualization.PieChart(document.getElementById('fixedvaluepiechart_3d2'));
+								chart.draw(data, options);
+								}//GenderResponseHandler
+					</script>
+				</head>
+				<body>
+					<table align="center">
+						<tr>
+							<td><div id="fixedvaluepiechart_3d" style="width: 400px; height: 300px;"></div>
+							<td><div id="fixedvaluepiechart_3d2" style="width: 400px; height: 300px;"></div>
+						</tr>
+					</table>
+
+				</body>
+				<br></br>
+
+				<h4>Mass Shootings Correlation between varibales: </h4>
+				<br></br>
+
+				<img src="Mass Shooting Correlation.png" alt="Correlation" style="width:600px;height:500px;">
+<br></br>
+<br></br>
+				<h2>Mass Shootings in U.S (Total Victim)</h2>
+				<a href="https://public.tableau.com/profile/tianyi2658#!/vizhome/map_438/TotalVictimMap?publish=yes"><img src="total victim map.png" alt="	total victim map" style="width:800px;height:400px;"></a>
+					<br></br>
+					<br></br>
+					<h4>Mass Shootings in 1966 to 2017: </h4>
+					<br></br>
+					<iframe  style="width:800px;height:400px;" src="https://jessicawang720.carto.com/builder/fe687809-b318-4b12-9ff4-5cd458373a57/embed"></iframe>
+					<br></br>
+					<br></br>
+					<img src="Mass Shootings by Regions.png" alt="Mass Shootings by Regions" style="width:800px;height:500px;">
+					<br></br>
+					<br></br>
+					<img src="U.S population with internet users.png" alt="U.S population with internet users" style="width:800px;height:500px;">
+					<br></br>
+					<br></br>
+
+					<a href="https://public.tableau.com/profile/tianyi2658#!/vizhome/Fatalitiesvs_Injured/Sheet1?publish=yes"><img src="number of fatalities vs injured.jpg" alt="number of fatalities vs injured" style="width:800px;height:400px;"></a>
+					<br></br>
+					<br></br>
+					<a href="https://public.tableau.com/profile/tianyi2658#!/vizhome/relationship_1/Sheet1?publish=yes"><img src="number of mass shootings vs firearms Manufactured.jpg" alt="	number of mass shootings vs firearms Manufactured" style="width:800px;height:600px;"></a>
+
+					<br></br>
+					<br></br>
+					<a href="https://public.tableau.com/profile/tianyi2658#!/vizhome/MassShootingProject/Dashboard1?publish=yes"><img src="regions.png" alt= "regions" style="width:800px;height:650px;"></a>
+					<br></br>
+
+
+</html>
